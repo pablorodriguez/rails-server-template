@@ -21,7 +21,7 @@
         // everyone in the group sysadmin gets sudo rights
         "groups": ["sysadmin"],
         // the deploy user specifically gets sudo rights
-        "users": ["deploy"],
+        "users": ["deploy","vagrant"],
         // whether a user with sudo rights can execute sudo
         // commands without entering their password.
         "passwordless": true
@@ -103,4 +103,3 @@
   "override_attributes": {
   }
 }
-
