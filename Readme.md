@@ -17,3 +17,15 @@ If you run into any issues using the template provided here, please open a Githu
 This template is designed to work on Ubuntu 14.04 (the current LTS) and is tested regularly against Digital Ocean and Linode.
 
 When opening an issue, please include the Ubuntu version and provider the issue was encountered on.
+
+## Chef List Commands for Vagrant VM
+May be you have to remove the server fingerprint from Knowhost file under .ssh folder
+
+knife solo prepare vagrant@127.0.0.1 -p 2222 -i /Users/pablo/vagrant_boxes/resumator/.vagrant/machines/default/virtualbox/private_key
+
+knife solo cook vagrant@127.0.0.1 -p 2222 -i /Users/pablo/vagrant_boxes/resumator/.vagrant/machines/default/virtualbox/private_key nodes/127.0.0.1.json
+
+
+knife solo bootstrap vagrant@127.0.0.1 -p 2222 -i /Users/pablo/vagrant_boxes/resumator/.vagrant/machines/default/virtualbox/private_key nodes/127.0.0.1.json
+
+

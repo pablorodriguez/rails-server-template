@@ -32,34 +32,37 @@
     "password" : {
       // this should be generated with:
       // openssl passwd -1 "plaintextpassword"
-      //postgres: test1234
-      "postgres" : "$1$xzR54ixB$cNTqjicHwEDLphMtfTcBQ0"
+      "postgres" : "$1$JC2nqQaK$Tb8jDr58kCto6cXrzh6720"
     }
   },
-  "default_attributes":{
-    "ruby_build":{
-      "upgrade":"sync"
-    },
-    "rbenv":{
-      "rubies": "2.2.2",
-      "global": "2.2.2",
-      "gems" :{
-        "2.2.2":[
-          {"name" : "bundler"}
-        ]
-      }
+  "rbenv":{
+    "rubies": [
+      "2.1.2"
+    ],
+    "global" : "2.1.2",
+    "gems": {
+      "2.1.2" : [
+        {"name":"bundler"}
+      ]
     }
   },
-   "run_list":
+  "vagrant" : {
+    // See http://www.talkingquickly.co.uk/2014/08/auto-generate-vagrant-machines-from-chef-node-definitions/ for more on this
+    "exclusions" : [],
+    "ip" : "192.168.1.32",
+    "name" : "rails-postgres-redis1"
+  },
+  "run_list":
   [
+    "role[server]",
+    "role[nginx-server]",
+    "role[postgres-server]",
     "role[rails-app]"
   ],
 
   "new_run_list":
   [
-    "role[server]",
-    "role[nginx-server]",
-    "role[postgres-server]",
-    "role[redis-server]"
+    "role[redis-server]",
+    "recipe[example1]"
   ]
 }
