@@ -5,6 +5,7 @@
     "mysql": {
         // only allow root login via localhost (e.g.
         // ssh tunnel).
+        "server_root_password": "root5624",
         "allow_remote_root":false,
         // remote the default test database
         "remote_test_database":true,

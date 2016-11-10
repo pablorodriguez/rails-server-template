@@ -1,0 +1,59 @@
+{
+  "environment":"production",
+  "monit_address": "monit.combox.local",
+  "authorization": {
+    "sudo": {
+      // An array of users who should have access to sudo.
+      // If you're using vagrant it's worth adding "vagrant"
+      // to this array
+      // The password for the deploy user is set in data_bags/users/deploy.json
+      // and should be generated using:
+      // openssl passwd -1 "plaintextpassword"
+      "users": ["deploy"]
+    }
+  },
+  "monit": {
+    "enable_emails" : true,
+    "mailserver" : {
+      // For example Mailgun or Sendgrid
+      "host" : "smtp.gmail.com",
+      "port" : "587",
+      "username" : "mail1@comunidadbox.com",
+      "password" : "5624mail",
+      "hostname" : "comunidadbox.com"
+    },
+    "notify_emails" : ["pablorodriguez.ar@gmail.com"],
+    "web_interface" : {
+      // the plaintext monit username and password
+      "allow" : ["monit","monit5624"]
+    }
+  },
+  "rbenv":{
+    "rubies": [
+      "2.2.2"
+    ],
+    "global" : "2.2.2",
+    "gems": {
+      "2.2.2" : [
+        {"name":"bundler"}
+      ]
+    }
+  },
+  "redis": {
+   "dont_bind" : false
+  },
+  "run_list":
+  [
+    "role[server]",
+    "role[nginx-server]",
+    "role[redis-server]",
+    "role[mysql-server]",
+    "role[rails-app]"
+  ],
+
+  "new_run_list":
+  [
+    "role[postgres-server]",
+    "recipe[example1]"
+  ]
+}

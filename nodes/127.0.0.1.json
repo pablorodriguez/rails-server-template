@@ -52,11 +52,12 @@
   },
    "run_list":
   [
-    "role[rails-app]"
+    "recipe[aliases]"
   ],
 
   "new_run_list":
   [
+    "role[rails-app]",
     "role[server]",
     "role[nginx-server]",
     "role[postgres-server]",
