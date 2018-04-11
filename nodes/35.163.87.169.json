@@ -1,0 +1,21 @@
+// new ResumeGem Staging server AWS
+{
+  "environment":"production",
+  "redis":{
+    "dont_bind" : false
+  },
+  "run_list":
+  [
+    "role[redis-server]"
+  ],
+
+  "new_run_list":
+  [
+    "role[server]",
+    "role[nginx-server]",
+    "role[rails-app]",
+    "role[mysql-server]",
+    "role[postgres-server]",
+    "recipe[example1]"
+  ]
+}

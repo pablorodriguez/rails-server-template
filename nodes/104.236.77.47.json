@@ -1,4 +1,4 @@
-// New server for Comunidad Box V3 at Linode.com 
+// New server for PagoMisCompras QA Digital Ocean 
 {
   "environment":"production",
   "monit_address": "monit.combox.local",
@@ -10,7 +10,7 @@
       // The password for the deploy user is set in data_bags/users/deploy.json
       // and should be generated using:
       // openssl passwd -1 "plaintextpassword"
-      "users": ["deploy"]
+      "users": ["deployer"]
     }
   },
   "monit": {
@@ -48,13 +48,13 @@
     "role[server]",
     "role[nginx-server]",
     "role[redis-server]",
-    "role[mysql-server]",
+    "role[postgres-server]",
     "role[rails-app]"
   ],
-
+  
   "new_run_list":
   [
-    "role[postgres-server]",
+    "role[mysql-server]",
     "recipe[example1]"
   ]
 }

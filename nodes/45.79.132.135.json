@@ -1,7 +1,7 @@
-// New server for Comunidad Box V3 at Linode.com 
+// new ComunidadBox v3 Production Linode
 {
   "environment":"production",
-  "monit_address": "monit.combox.local",
+  "monit_address": "monit.comunidadbox.local",
   "authorization": {
     "sudo": {
       // An array of users who should have access to sudo.
@@ -10,7 +10,7 @@
       // The password for the deploy user is set in data_bags/users/deploy.json
       // and should be generated using:
       // openssl passwd -1 "plaintextpassword"
-      "users": ["deploy"]
+      "users": ["deployer"]
     }
   },
   "monit": {
@@ -23,7 +23,7 @@
       "password" : "5624mail",
       "hostname" : "comunidadbox.com"
     },
-    "notify_emails" : ["pablorodriguez.ar@gmail.com"],
+    "notify_emails" : ["pablo@comunidadbox.com"],
     "web_interface" : {
       // the plaintext monit username and password
       "allow" : ["monit","monit5624"]
@@ -31,25 +31,22 @@
   },
   "rbenv":{
     "rubies": [
-      "2.2.2"
+      "2.4.2"
     ],
-    "global" : "2.2.2",
+    "global" : "2.4.1",
     "gems": {
-      "2.2.2" : [
+      "2.4.1" : [
         {"name":"bundler"}
       ]
     }
-  },
-  "redis": {
-   "dont_bind" : false
   },
   "run_list":
   [
     "role[server]",
     "role[nginx-server]",
-    "role[redis-server]",
     "role[mysql-server]",
-    "role[rails-app]"
+    "role[rails-app]",
+    "role[redis-server]"
   ],
 
   "new_run_list":

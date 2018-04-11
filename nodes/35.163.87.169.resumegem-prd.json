@@ -1,7 +1,7 @@
-// New server for Comunidad Box V3 at Linode.com 
+// new ResumeGem Production server AWS
 {
   "environment":"production",
-  "monit_address": "monit.combox.local",
+  "monit_address": "monit.resumegem.local",
   "authorization": {
     "sudo": {
       // An array of users who should have access to sudo.
@@ -10,20 +10,20 @@
       // The password for the deploy user is set in data_bags/users/deploy.json
       // and should be generated using:
       // openssl passwd -1 "plaintextpassword"
-      "users": ["deploy"]
+      "users": ["deployer"]
     }
   },
   "monit": {
     "enable_emails" : true,
     "mailserver" : {
       // For example Mailgun or Sendgrid
-      "host" : "smtp.gmail.com",
+      "host" : "smtp.office365.com",
       "port" : "587",
-      "username" : "mail1@comunidadbox.com",
-      "password" : "5624mail",
-      "hostname" : "comunidadbox.com"
+      "username" : "support@resumegem.com",
+      "password" : "RedTem303",
+      "hostname" : "resumegem.com"
     },
-    "notify_emails" : ["pablorodriguez.ar@gmail.com"],
+    "notify_emails" : ["pablo.rodriguez@dreamstaffing.com"],
     "web_interface" : {
       // the plaintext monit username and password
       "allow" : ["monit","monit5624"]
@@ -40,21 +40,18 @@
       ]
     }
   },
-  "redis": {
-   "dont_bind" : false
-  },
   "run_list":
   [
     "role[server]",
     "role[nginx-server]",
-    "role[redis-server]",
-    "role[mysql-server]",
     "role[rails-app]"
   ],
 
   "new_run_list":
   [
+    "role[mysql-server]",
     "role[postgres-server]",
+    "role[redis-server]",
     "recipe[example1]"
   ]
 }

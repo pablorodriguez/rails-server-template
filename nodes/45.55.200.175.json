@@ -1,7 +1,7 @@
-// New server for Comunidad Box V3 at Linode.com 
+// new server of Energage at Digital Ocean
 {
   "environment":"production",
-  "monit_address": "monit.combox.local",
+  "monit_address": "monit.us-cco-prd.local",
   "authorization": {
     "sudo": {
       // An array of users who should have access to sudo.
@@ -19,11 +19,11 @@
       // For example Mailgun or Sendgrid
       "host" : "smtp.gmail.com",
       "port" : "587",
-      "username" : "mail1@comunidadbox.com",
-      "password" : "5624mail",
-      "hostname" : "comunidadbox.com"
+      "username" : "noreply@catalyticcoachingonline.com",
+      "password" : "noreply1999",
+      "hostname" : "catalyticcoachingonline.com"
     },
-    "notify_emails" : ["pablorodriguez.ar@gmail.com"],
+    "notify_emails" : ["christi@energage.com"],
     "web_interface" : {
       // the plaintext monit username and password
       "allow" : ["monit","monit5624"]
@@ -40,14 +40,10 @@
       ]
     }
   },
-  "redis": {
-   "dont_bind" : false
-  },
   "run_list":
   [
     "role[server]",
     "role[nginx-server]",
-    "role[redis-server]",
     "role[mysql-server]",
     "role[rails-app]"
   ],
